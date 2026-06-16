@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "commerce-home",
+      "urls": [
+        "https://venia.magento.com/"
+      ],
+      "description": "Venia PWA Studio sample home page. Static authorable marketing content (hero banner, category promo tiles, two side-by-side promos). Header, footer, and the Top Sellers product grid are dynamic commerce regions excluded from authoring.",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".venia-home-slider"
+          ]
+        },
+        {
+          "name": "cards-promo",
+          "instances": [
+            ".venia-home-callout"
+          ]
+        },
+        {
+          "name": "columns-feature",
+          "instances": [
+            ".venia-home-banner-a-content",
+            ".venia-home-banner-a-image"
+          ]
+        },
+        {
+          "name": "columns-dark",
+          "instances": [
+            ".venia-home-banner-b-image",
+            ".venia-home-banner-b-content"
+          ],
+          "section": "dark"
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero banner",
+          "selector": ".venia-home-row-1 .venia-home-slider",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Category promo tiles",
+          "selector": ".venia-home-callout",
+          "style": null,
+          "blocks": [
+            "cards-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Signature heels promo",
+          "selector": ".venia-home-banner-a-content",
+          "style": null,
+          "blocks": [
+            "columns-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Vacations promo (dark)",
+          "selector": ".venia-home-banner-b-image",
+          "style": "dark",
+          "blocks": [
+            "columns-dark"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "Top Sellers heading",
+          "selector": ".venia-home-row-2",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".venia-home-row-2 h2"
+          ]
+        }
+      ]
+    }
+  ]
+}

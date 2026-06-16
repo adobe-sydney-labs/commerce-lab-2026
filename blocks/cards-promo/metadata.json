@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-promo",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-16T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "category-promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + short caption",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "category/collection promo tile rows",
+      "3-up image+label promo grids",
+      "commerce shop-by entry points"
+    ],
+    "notSuitableFor": [
+      "text-only card grids",
+      "data tables or comparison layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T00:00:00.000Z"
+  }
+}

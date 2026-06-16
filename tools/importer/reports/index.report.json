@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://venia.magento.com/",
+  "path": "index",
+  "timestamp": "2026-06-16T07:02:38.715Z",
+  "title": "Home Page - Venia - Default Store View",
+  "template": "commerce-home",
+  "blocks": [
+    "hero-banner",
+    "cards-promo",
+    "cards-promo",
+    "cards-promo",
+    "columns-feature",
+    "columns-feature",
+    "columns-dark",
+    "columns-dark"
+  ]
+}

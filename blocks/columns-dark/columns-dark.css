@@ -1,0 +1,48 @@
+.columns-dark > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-dark img {
+  width: 100%;
+}
+
+.columns-dark > div > div {
+  order: 1;
+}
+
+/* dark contrast text panel for the non-image column */
+.columns-dark > div > div:not(.columns-dark-img-col) {
+  background-color: #1a1a1a;
+  color: var(--background-color, #fff);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.columns-dark > div > div:not(.columns-dark-img-col) a {
+  color: var(--background-color, #fff);
+}
+
+.columns-dark > div > .columns-dark-img-col {
+  order: 0;
+  padding: 0;
+}
+
+.columns-dark > div > .columns-dark-img-col img {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .columns-dark > div {
+    align-items: stretch;
+    flex-direction: unset;
+    gap: 0;
+  }
+
+  .columns-dark > div > div {
+    flex: 1;
+    order: unset;
+  }
+}

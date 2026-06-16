@@ -1,0 +1,160 @@
+/* Hero Banner block
+ * Visual design migrated from https://venia.magento.com/ (.venia-home-slider).
+ * Extracted computed styles in /migration-work/hero-banner-extracted.css.
+ */
+
+/* Full-bleed: override the section max-width/padding constraints */
+.hero-banner-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Light grey band that matches the source photo backdrop (~#f2f2f2) */
+.hero-banner {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  color: rgb(23 32 38);
+  padding: 0 0 48px;
+  text-align: center;
+}
+
+/* Row 1 = image cell, Row 2 = text cell */
+.hero-banner > div {
+  margin: 0;
+}
+
+/* Image cell */
+.hero-banner > div:first-child {
+  width: 100%;
+}
+
+.hero-banner picture {
+  display: block;
+  line-height: 0;
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 100% 0;
+}
+
+/* Text cell */
+.hero-banner > div:last-child > div {
+  padding: 32px 24px 0;
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+.hero-banner h2 {
+  font-family: "Source Serif Pro", georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: rgb(23 32 38);
+  margin: 16px 0 8px;
+}
+
+.hero-banner p {
+  font-family: muli, var(--type-base-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: normal;
+  color: rgb(23 32 38);
+  margin: 0 0 16px;
+}
+
+/* CTA "SHOP NOW" — solid royal-blue pill. */
+.hero-banner p:last-child {
+  margin: 0;
+}
+
+.hero-banner p a,
+.hero-banner p a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 192px;
+  min-height: 40px;
+  margin: 12px 0 0;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 20px;
+  background-color: rgb(31 57 255);
+  color: rgb(255 255 255);
+  font-family: muli, var(--type-base-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hero-banner p a:hover,
+.hero-banner p a:focus {
+  background-color: rgb(20 42 230);
+  color: rgb(255 255 255);
+  text-decoration: none;
+}
+
+@media (min-width: 900px) {
+  .hero-banner {
+    display: grid;
+    align-items: center;
+    min-height: 660px;
+    padding: 0 0 96px;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  /* Text sits in the left column, above the image */
+  .hero-banner > div:last-child {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  /* Image bleeds to the right edge, occupying the right half */
+  .hero-banner > div:first-child {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 60%;
+    height: 100%;
+    margin: 0;
+    z-index: 0;
+  }
+
+  .hero-banner > div:last-child > div {
+    max-width: 540px;
+    margin: 0;
+    padding: 0 0 0 90px;
+  }
+
+  .hero-banner > div:first-child > div,
+  .hero-banner picture {
+    height: 100%;
+  }
+
+  .hero-banner img {
+    height: 100%;
+    object-position: right center;
+  }
+
+  .hero-banner h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-banner > div:last-child > div {
+    padding-left: 120px;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-06-16T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce home page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "promo-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + heading + paragraph + 1 CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "commerce home/landing pages",
+      "full-width promotional banners with background image",
+      "above-the-fold marketing headers"
+    ],
+    "notSuitableFor": [
+      "text-only intros with no background image",
+      "multi-item layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T00:00:00.000Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-dark",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-06-16T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "wide",
+    "purpose": "feature-promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image column + dark text panel (heading + caption + 1 CTA)",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "side-by-side image + dark contrast text panel promos",
+      "high-impact two-column banners with a dark panel",
+      "seasonal/lifestyle promo banners"
+    ],
+    "notSuitableFor": [
+      "light background two-column promos (use columns-feature)",
+      "uniform repeating item grids (use cards)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T00:00:00.000Z"
+  }
+}

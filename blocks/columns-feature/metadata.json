@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-feature",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-06-16T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "feature-promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "text column (heading + subheading + paragraph + 2 CTAs) + image column",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "side-by-side text + image promos on light backgrounds",
+      "two-column feature highlights",
+      "product spotlight sections"
+    ],
+    "notSuitableFor": [
+      "dark/contrast panel promos (use columns-dark)",
+      "uniform repeating item grids (use cards)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-16T00:00:00.000Z"
+  }
+}
