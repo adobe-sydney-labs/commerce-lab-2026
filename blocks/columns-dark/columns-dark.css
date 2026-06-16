@@ -30,8 +30,17 @@
   padding: 0;
 }
 
+.columns-dark > div > .columns-dark-img-col picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .columns-dark > div > .columns-dark-img-col img {
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (min-width: 900px) {
