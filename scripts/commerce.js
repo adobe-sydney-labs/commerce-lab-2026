@@ -690,7 +690,7 @@ export function getProductLink(urlKey, sku) {
   }
 
   // Use template page path + sku query parameter to render product
-  const url = new URL(rootLink('/products/default'), window.location.origin);
+  const url = new URL(rootLink('/default/products'), window.location.origin);
   url.searchParams.set('sku', sku || '');
   return url.pathname + url.search;
 }
