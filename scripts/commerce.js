@@ -11,6 +11,8 @@ import { FetchGraphQL } from '@dropins/tools/fetch-graphql.js';
 import {
   getMetadata,
   readBlockConfig,
+  toCamelCase,
+  toClassName,
 } from './aem.js';
 import initializeDropins from './initializers/index.js';
 
@@ -51,6 +53,7 @@ export const CS_FETCH_GRAPHQL = new FetchGraphQL();
 // Environment checks
 export const IS_UE = window.location.hostname.includes('ue.da.live');
 export const IS_DA = new URL(window.location.href).searchParams.has('dapreview');
+export const IS_AEMCODER = window.location.hostname.includes('preview-aemcoder');
 
 /**
  * Product template paths - pages that are templates and should use
@@ -58,6 +61,9 @@ export const IS_DA = new URL(window.location.href).searchParams.has('dapreview')
  */
 export const PRODUCT_TEMPLATE_PATHS = [
   'products/default',
+  'content/products/default',
+  'default',
+  'content/default',
 ];
 
 // PATHS
@@ -665,7 +671,7 @@ export function isProductTemplate() {
 
   return PRODUCT_TEMPLATE_PATHS.some((templatePath) => {
     const fullPath = root ? `${root}${templatePath}` : templatePath;
-    return pathname === fullPath || pathname === fullPath.replace(/\/$/, '');
+    return pathname === fullPath || pathname === fullPath.replace(/\/$/, '') || pathname.startsWith(`${fullPath}/`);
   });
 }
 
@@ -694,7 +700,7 @@ export function getProductLink(urlKey, sku) {
  * @returns {string|null} The SKU from metadata or URL, or null if not found
  */
 export function getProductSku() {
-  if (isProductTemplate() && (IS_UE || IS_DA)) {
+  if (isProductTemplate() && (IS_UE || IS_DA || IS_AEMCODER)) {
     return getDefaultSkuFromBlock();
   }
 
@@ -721,14 +727,14 @@ function trackHistory() {
   const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
   window.adobeDataLayer.push((dl) => {
     dl.addEventListener('adobeDataLayer:change', (event) => {
-      if (!event.productContext || !event.productContext.sku) {
+      if (!event.productContext) {
         return;
       }
       const key = `${storeViewCode}:productViewHistory`;
       let viewHistory = JSON.parse(window.localStorage.getItem(key) || '[]');
       viewHistory = viewHistory.filter((item) => item.sku !== event.productContext.sku);
       viewHistory.push({ date: new Date().toISOString(), sku: event.productContext.sku });
-      window.localStorage.setItem(key, JSON.stringify(viewHistory.slice(-20)));
+      window.localStorage.setItem(key, JSON.stringify(viewHistory.slice(-10)));
     }, { path: 'productContext' });
     dl.addEventListener('place-order', () => {
       const shoppingCartContext = dl.getState('shoppingCartContext');
@@ -765,16 +771,10 @@ export function setJsonLd(data, name) {
 }
 
 /**
- * Loads and displays an error page (e.g., 418) by replacing the current page
- * content. If the code is a 404, we redirect to a non-existant page which
- * causes the 404.html from this repo to be loaded.
+ * Loads and displays an error page (e.g., 404) by replacing the current page content.
  * @param {number} [code=404] - The HTTP error code for the error page
  */
 export async function loadErrorPage(code = 404) {
-  if (code === 404) {
-    window.location.replace('/notfound');
-    return;
-  }
   const htmlText = await fetch(`/${code}.html`).then((response) => {
     if (response.ok) {
       return response.text();
@@ -789,6 +789,15 @@ export async function loadErrorPage(code = 404) {
     doc.head.appendChild(style);
   });
   document.head.innerHTML = doc.head.innerHTML;
+
+  // https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript
+  // Point 2. prevent soft 404 errors
+  if (code === 404) {
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex';
+    document.head.appendChild(metaRobots);
+  }
 
   // When moving script tags via innerHTML, they are not executed. They need to be re-created.
   const notImportMap = (c) => c.textContent && c.type !== 'importmap';
@@ -871,5 +880,24 @@ export function decorateSections(main) {
     section.classList.add('section');
     section.dataset.sectionStatus = 'initialized';
     section.style.display = 'none';
+
+    // Process section metadata
+    const sectionMeta = section.querySelector('div.section-metadata');
+    if (sectionMeta) {
+      const meta = readBlockConfig(sectionMeta);
+      Object.keys(meta).forEach((key) => {
+        if (key === 'style') {
+          const styles = meta.style
+            .split(',')
+            .filter((style) => style)
+            .map((style) => toClassName(style.trim()));
+          styles.forEach((style) => section.classList.add(style));
+        } else {
+          section.dataset[toCamelCase(key)] = meta[key];
+        }
+      });
+      sectionMeta.parentNode.remove();
+    }
   });
 }
+
