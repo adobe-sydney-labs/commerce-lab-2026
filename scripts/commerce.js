@@ -871,5 +871,28 @@ export function decorateSections(main) {
     section.classList.add('section');
     section.dataset.sectionStatus = 'initialized';
     section.style.display = 'none';
+
+    // Process section metadata
+    const sectionMeta = section.querySelector('div.section-metadata');
+    if (sectionMeta) {
+      const meta = {};
+      sectionMeta.querySelectorAll(':scope > div').forEach((row) => {
+        if (row.children.length === 2) {
+          const key = row.children[0].textContent.trim().toLowerCase();
+          const value = row.children[1].textContent.trim();
+          meta[key] = value;
+        }
+      });
+      Object.keys(meta).forEach((key) => {
+        if (key === 'style') {
+          meta.style.split(',').filter((style) => style).forEach((style) => {
+            section.classList.add(style.trim().toLowerCase().replace(/[^0-9a-z]/gi, '-'));
+          });
+        } else {
+          section.dataset[key] = meta[key];
+        }
+      });
+      sectionMeta.parentElement.remove();
+    }
   });
 }
