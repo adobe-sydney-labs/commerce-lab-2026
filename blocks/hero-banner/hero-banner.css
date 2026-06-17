@@ -1,5 +1,6 @@
 /* Hero Banner block
  * Visual design migrated from https://venia.magento.com/ (.venia-home-slider).
+ * Rotating carousel of slides, each = an image cell + a text cell.
  * Extracted computed styles in /migration-work/hero-banner-extracted.css.
  */
 
@@ -15,17 +16,34 @@
   box-sizing: border-box;
   background-color: #f2f2f2;
   color: rgb(23 32 38);
-  padding: 0 0 48px;
   text-align: center;
 }
 
-/* Row 1 = image cell, Row 2 = text cell */
-.hero-banner > div {
+/* Slides stack in a single grid cell; only the active one is shown. */
+.hero-banner-slides {
+  display: grid;
+}
+
+.hero-banner-slide {
+  position: relative;
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 0 0 48px;
+}
+
+.hero-banner-slide.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hero-banner-slide > div {
   margin: 0;
 }
 
 /* Image cell */
-.hero-banner > div:first-child {
+.hero-banner-slide > div:first-child {
   width: 100%;
 }
 
@@ -43,7 +61,7 @@
 }
 
 /* Text cell */
-.hero-banner > div:last-child > div {
+.hero-banner-slide > div:last-child > div {
   padding: 32px 24px 0;
   margin: 0 auto;
   max-width: 540px;
@@ -104,8 +122,36 @@
   text-decoration: none;
 }
 
+/* Carousel pager dots */
+.hero-banner-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-banner-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  cursor: pointer;
+  appearance: none;
+}
+
+.hero-banner-dot.active {
+  background-color: #1a1a1a;
+  box-shadow: 0 0 0 3px #f2f2f2, 0 0 0 4px #1a1a1a;
+}
+
 @media (min-width: 900px) {
-  .hero-banner {
+  .hero-banner-slide {
     display: grid;
     align-items: center;
     min-height: 660px;
@@ -115,14 +161,14 @@
   }
 
   /* Text sits in the left column, above the image */
-  .hero-banner > div:last-child {
+  .hero-banner-slide > div:last-child {
     position: relative;
     z-index: 1;
     width: 100%;
   }
 
   /* Image bleeds to the right edge, occupying the right half */
-  .hero-banner > div:first-child {
+  .hero-banner-slide > div:first-child {
     position: absolute;
     inset: 0 0 0 auto;
     width: 60%;
@@ -131,13 +177,13 @@
     z-index: 0;
   }
 
-  .hero-banner > div:last-child > div {
+  .hero-banner-slide > div:last-child > div {
     max-width: 540px;
     margin: 0;
     padding: 0 0 0 90px;
   }
 
-  .hero-banner > div:first-child > div,
+  .hero-banner-slide > div:first-child > div,
   .hero-banner picture {
     height: 100%;
   }
@@ -154,7 +200,7 @@
 }
 
 @media (min-width: 1200px) {
-  .hero-banner > div:last-child > div {
+  .hero-banner-slide > div:last-child > div {
     padding-left: 120px;
   }
 }
