@@ -128,6 +128,14 @@
   --type-fixed-font-family: adobe-clean, "Roboto Mono", menlo, consolas, "Liberation Mono", monospace, system-ui, sans-serif;
   --background-color: var(--color-neutral-50);
   --nav-height: 6.4rem;
+
+  /* Venia theme tokens */
+  --venia-body-font: "Mulish", "Muli", helvetica, arial, sans-serif;
+  --venia-heading-font: "Source Serif 4", "Source Serif Pro", georgia, serif;
+  --venia-text-color: #172026;
+  --venia-accent: #1f39ff;
+  --venia-accent-hover: #0d1f99;
+  --venia-dark-panel: #1b252c;
 }
 
 /* fallback font */
@@ -146,10 +154,13 @@ html {
 }
 
 body {
-  font: var(--type-body-1-default-font);
-  letter-spacing: var(--type-body-1-default-letter-spacing);
+  font-family: var(--venia-body-font);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
   margin: 0;
-  color: var(--color-neutral-800);
+  color: var(--venia-text-color);
   background-color: var(--background-color);
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -192,23 +203,27 @@ h5,
 h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
+  font-family: var(--venia-heading-font);
+  font-weight: 600;
   line-height: 1.25;
+  color: var(--venia-text-color);
+  letter-spacing: normal;
   scroll-margin: 40px;
 }
 
 h1 {
-  font: var(--type-display-1-font);
-  letter-spacing: var(--type-display-1-letter-spacing);
+  font-size: 4.8rem;
+  line-height: 1.25;
 }
 
 h2 {
-  font: var(--type-display-2-font);
-  letter-spacing: var(--type-display-2-letter-spacing);
+  font-size: 4rem;
+  line-height: 1.25;
 }
 
 h3 {
-  font: var(--type-display-3-font);
-  letter-spacing: var(--type-display-3-letter-spacing);
+  font-size: 2.4rem;
+  line-height: 1.25;
 }
 
 h4 {
@@ -298,19 +313,23 @@ button.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 192px;
+  height: 40px;
   max-width: 100%;
   margin: 0;
-  border: var(--shape-border-width-3) solid transparent;
-  border-radius: var(--shape-border-radius-3);
-  padding: 0.5em 1.2em;
-  font: var(--type-button-2-font);
-  letter-spacing: var(--type-button-2-letter-spacing);
+  border: 2px solid var(--venia-accent);
+  border-radius: 20px;
+  padding: 0 1.6em;
+  font-family: var(--venia-body-font);
+  font-size: 1.4rem;
+  letter-spacing: 0.25px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.25;
+  text-transform: uppercase;
   text-decoration: none;
-  background-color: var(--color-brand-500);
-  color: var(--color-neutral-50);
+  background-color: var(--venia-accent);
+  color: #fff;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -327,7 +346,9 @@ main a.button:hover,
 main a.button:focus,
 button.button:hover,
 button.button:focus {
-  background-color: var(--color-brand-600);
+  border-color: var(--venia-accent-hover);
+  background-color: var(--venia-accent-hover);
+  text-decoration: none;
   cursor: pointer;
 }
 
