@@ -61,3 +61,70 @@
     gap: 10px;
     align-items: center;
 }
+
+/* Slider arrows for the recommendations product row */
+.product-recommendations .recommendations-product-list {
+    position: relative;
+}
+
+.product-recommendations .recommendations__arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #d8d8d8;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+    cursor: pointer;
+}
+
+.product-recommendations .recommendations__has-arrows .recommendations__arrow {
+    display: inline-flex;
+}
+
+.product-recommendations .recommendations__arrow--prev {
+    left: 8px;
+}
+
+.product-recommendations .recommendations__arrow--next {
+    right: 8px;
+}
+
+.product-recommendations .recommendations__arrow:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.product-recommendations .recommendations__arrow:hover:not(:disabled) {
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+/* Chevron drawn with a rotated border */
+.product-recommendations .recommendations__arrow .recommendations__arrow-icon {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.product-recommendations .recommendations__arrow--prev .recommendations__arrow-icon {
+    transform: rotate(135deg);
+    margin-left: 4px;
+}
+
+.product-recommendations .recommendations__arrow--next .recommendations__arrow-icon {
+    transform: rotate(-45deg);
+    margin-right: 4px;
+}
+
+.product-recommendations .recommendations__arrow:hover:not(:disabled) .recommendations__arrow-icon {
+    border-color: #fff;
+}
