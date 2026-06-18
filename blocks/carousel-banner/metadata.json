@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-banner",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-06-11T23:19:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + paragraph + CTA",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "slides": 2
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "full-width promotional hero banners",
+      "rotating image-led marketing slideshows",
+      "homepage top banners"
+    ],
+    "notSuitableFor": [
+      "product listing carousels",
+      "text-only sliders without imagery"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-11T23:19:00.000Z"
+  }
+}
