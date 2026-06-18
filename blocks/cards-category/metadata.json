@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-category",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-06-11T23:19:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "category",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + short paragraph",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "itemCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "category promo tile grids",
+      "image-led shop-by-category sections",
+      "equal-width feature tiles"
+    ],
+    "notSuitableFor": [
+      "text-only feature lists",
+      "interactive sliders"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-11T23:19:00.000Z"
+  }
+}
