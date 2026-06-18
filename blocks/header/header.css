@@ -26,7 +26,7 @@ header nav {
   max-width: 1248px;
   height: var(--nav-height);
   padding: 0 24px;
-  font-family: var(--type-base-font-family);
+  font-family: var(--venia-body-font);
 }
 
 header nav[aria-expanded='true'] {
@@ -150,10 +150,20 @@ header nav .nav-brand {
 
 header nav .nav-brand a {
   grid-area: brand;
-  flex-basis: 128px;
-  font: var(--type-headline-1-font);
-  letter-spacing: var(--type-headline-1-letter-spacing);
-  font-weight: bold;
+  flex-basis: auto;
+  font-family: var(--venia-heading-font);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--venia-text-color);
+}
+
+@media (min-width: 900px) {
+  header nav .nav-brand a {
+    font-size: 2.4rem;
+  }
 }
 
 li.nav-drop img {
@@ -191,8 +201,19 @@ header nav .nav-sections ul {
 
 header nav .nav-sections ul>li,
 header nav .nav-sections ul>li>a {
-  font: var(--type-body-2-strong-font);
-  letter-spacing: var(--type-body-2-strong-letter-spacing);
+  font-family: var(--venia-body-font);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--venia-text-color);
+}
+
+@media (min-width: 900px) {
+  header nav .nav-sections ul>li>a:hover,
+  header nav .nav-sections ul>li>p>a:hover {
+    color: var(--venia-accent);
+    text-decoration: none;
+  }
 }
 
 header nav .nav-brand a:hover {
@@ -216,6 +237,8 @@ header nav .nav-sections ul>li:empty {
     display: block;
     visibility: visible;
     white-space: nowrap;
+    margin-left: var(--spacing-big);
+    margin-right: auto;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
@@ -234,6 +257,19 @@ header nav .nav-sections ul>li:empty {
 
   header nav .nav-sections .default-content-wrapper>ul>li a {
     text-decoration: none;
+  }
+
+  /* Normalize all top-level nav entries to the same type metrics so plain
+     links (no submenu) align with dropdown items instead of rendering larger. */
+  header nav .nav-sections .default-content-wrapper>ul>li,
+  header nav .nav-sections .default-content-wrapper>ul>li>a,
+  header nav .nav-sections .default-content-wrapper>ul>li>p,
+  header nav .nav-sections .default-content-wrapper>ul>li>p>a {
+    font-family: var(--venia-body-font);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
   }
 
   header nav .nav-sections ul {

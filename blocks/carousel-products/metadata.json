@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-products",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-06-11T23:19:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "product",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "product image + name + price + add-to-cart CTA",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "slides": 10
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "top sellers product carousels",
+      "featured product sliders",
+      "horizontally paged product showcases"
+    ],
+    "notSuitableFor": [
+      "full-width hero banners",
+      "single static image displays"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-11T23:19:00.000Z"
+  }
+}
