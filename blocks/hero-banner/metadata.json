@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-06-11T23:19:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://venia.magento.com/",
+    "originPage": "Venia commerce homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "one or more slides, each = background image row + content row (heading + eyebrow + CTA). 2+ slides render as a dot-navigated carousel.",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "full-width lifestyle promo banners",
+      "single-slide marketing banners with background image",
+      "multi-slide hero carousels with manual dot navigation",
+      "section break call-to-action banners"
+    ],
+    "notSuitableFor": [
+      "auto-advancing/timed carousels",
+      "repeating product/category grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-06-11T23:19:00.000Z"
+  }
+}
