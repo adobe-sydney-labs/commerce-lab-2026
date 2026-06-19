@@ -92,34 +92,99 @@
   margin: 0;
 }
 
+/* CTA — vibrant, animated beach-styled pill (tropical ocean → sunset gradient). */
 .hero-banner p a,
 .hero-banner p a:any-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   box-sizing: border-box;
   min-width: 192px;
-  min-height: 40px;
+  min-height: 48px;
   margin: 12px 0 0;
-  padding: 0 24px;
+  padding: 0 32px;
   border: 0;
-  border-radius: 20px;
-  background-color: rgb(31 57 255);
+  border-radius: 24px;
+  background-image: linear-gradient(
+    100deg,
+    #00c6a7 0%,
+    #1fa2ff 35%,
+    #ff7e5f 70%,
+    #ffb347 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
   color: rgb(255 255 255);
   font-family: muli, var(--type-base-font-family);
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
-  letter-spacing: 0.25px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   text-decoration: none;
+  box-shadow: 0 6px 18px rgb(31 162 255 / 35%), 0 2px 6px rgb(255 126 95 / 30%);
+  animation: hero-banner-cta-bob 3.2s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.6s ease;
+}
+
+/* Shimmer sweep that glides across the button. */
+.hero-banner p a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(255 255 255 / 55%) 50%,
+    rgb(255 255 255 / 0%) 100%
+  );
+  transform: skewX(-20deg);
+  animation: hero-banner-cta-shimmer 3.6s ease-in-out infinite;
 }
 
 .hero-banner p a:hover,
 .hero-banner p a:focus {
-  background-color: rgb(20 42 230);
   color: rgb(255 255 255);
   text-decoration: none;
+  background-position: 100% 50%;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgb(31 162 255 / 45%), 0 4px 10px rgb(255 126 95 / 40%);
+  animation-play-state: paused;
+}
+
+/* Gentle floating motion to evoke a relaxed beach vibe. */
+@keyframes hero-banner-cta-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Light reflection sweeping across, like sun on water. */
+@keyframes hero-banner-cta-shimmer {
+  0% {
+    left: -60%;
+  }
+
+  60%, 100% {
+    left: 130%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner p a,
+  .hero-banner p a:any-link,
+  .hero-banner p a::before {
+    animation: none;
+  }
 }
 
 /* Carousel pager dots */
