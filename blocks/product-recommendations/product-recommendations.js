@@ -85,6 +85,84 @@ function getPurchaseHistory(storeViewCode) {
   }
 }
 
+/**
+ * Adds prev/next slider arrows to the recommendations product row and wires
+ * them to scroll the horizontally-overflowing list. Safe to call repeatedly:
+ * it waits for the dropin's scroll container to appear and won't duplicate
+ * controls. The dropin renders products asynchronously (and may re-render), so
+ * the scroll container is re-queried on each interaction and its size/contents
+ * are observed to keep arrow visibility in sync.
+ * @param {Element} wrapper - The recommendations wrapper element
+ */
+function addSliderArrows(wrapper) {
+  const start = Date.now();
+
+  const tryAttach = () => {
+    // The dropin renders products into `.recommendations-product-list__content`.
+    const scroller = wrapper.querySelector('.recommendations-product-list__content');
+    if (!scroller) {
+      if (Date.now() - start < 8000) {
+        setTimeout(tryAttach, 200);
+      }
+      return;
+    }
+
+    const container = scroller.closest('.recommendations-product-list') || scroller.parentElement;
+    if (!container || container.querySelector(':scope > .recommendations__arrow')) {
+      return; // already wired
+    }
+
+    const makeArrow = (direction) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `recommendations__arrow recommendations__arrow--${direction}`;
+      btn.setAttribute('aria-label', direction === 'prev' ? 'Scroll to previous products' : 'Scroll to next products');
+      btn.innerHTML = '<span class="recommendations__arrow-icon" aria-hidden="true"></span>';
+      return btn;
+    };
+
+    const prev = makeArrow('prev');
+    const next = makeArrow('next');
+
+    // Re-query the live scroll container each time: the dropin can replace its
+    // content node when recommendation data loads.
+    const getScroller = () => container.querySelector('.recommendations-product-list__content') || scroller;
+
+    const scrollByPage = (dir) => {
+      const el = getScroller();
+      const item = el.querySelector('.recommendations-product-item-card, .product-grid-item');
+      const step = item ? item.getBoundingClientRect().width + 32 : el.clientWidth * 0.8;
+      el.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+
+    const updateArrows = () => {
+      const el = getScroller();
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const overflows = maxScroll > 4;
+      container.classList.toggle('recommendations__has-arrows', overflows);
+      prev.disabled = el.scrollLeft <= 1;
+      next.disabled = el.scrollLeft >= maxScroll - 1;
+    };
+
+    prev.addEventListener('click', () => scrollByPage(-1));
+    next.addEventListener('click', () => scrollByPage(1));
+    container.addEventListener('scroll', updateArrows, { passive: true, capture: true });
+    window.addEventListener('resize', updateArrows);
+
+    // Products load asynchronously and the dropin may re-render: observe the
+    // container so arrow visibility recomputes when size or contents change.
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(updateArrows).observe(container);
+    }
+    new MutationObserver(updateArrows).observe(container, { childList: true, subtree: true });
+
+    container.append(prev, next);
+    updateArrows();
+  };
+
+  tryAttach();
+}
+
 export default async function decorate(block) {
   const labels = await fetchPlaceholders();
 
@@ -254,6 +332,10 @@ export default async function decorate(block) {
           },
         })($wrapper),
       ]);
+
+      // Once the dropin has rendered its product row, add left/right slider
+      // arrows that scroll the horizontally-overflowing product list.
+      addSliderArrows($wrapper);
     } finally {
       isLoading = false;
     }
