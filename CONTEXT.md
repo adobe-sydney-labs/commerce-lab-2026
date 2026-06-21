@@ -1,7 +1,6 @@
 ## Project
 - Site: `commerce-lab-2026`
 - Repo: `adobe-sydney-labs/commerce-lab-2026`
-- Branch: `aem-20260618-1307`
 - Source site / source CMS: `https://venia.magento.com/` (Magento PWA Studio storefront)
 - Target pattern: `EDS` (Document Authoring / DA project, `type: da`) with Adobe Commerce drop-in blocks
 
