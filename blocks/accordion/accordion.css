@@ -1,61 +1,123 @@
+.accordion {
+  /* Accordion design tokens (from Figma: Venia Shipping - Accordion) */
+  --accordion-radius: 16px;
+  --accordion-border: 1px solid var(--venia-accent);
+  --accordion-surface: #f3f3f3;
+  --accordion-summary-pad: 16px 24px;
+  --accordion-body-pad: 16px 24px;
+  --accordion-title-color: #0f1a14;
+  --accordion-title-size: 18px;
+  --accordion-title-line: 22px;
+  --accordion-body-color: #3d4f45;
+  --accordion-body-size: 16px;
+  --accordion-body-line: 27px;
+  --accordion-icon-size: 20px;
+  --accordion-icon-thickness: 2px;
+  --accordion-icon-color: var(--venia-accent);
+  --accordion-hover-bg: var(--venia-accent);
+  --accordion-hover-color: #fff;
+  --accordion-gap: 16px;
+}
+
 .accordion details {
-    border: 1px solid #dadada;
+  border: var(--accordion-border);
+  border-radius: var(--accordion-radius);
+  background-color: var(--accordion-surface);
+  overflow: hidden;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .accordion details + details {
-    margin-top: 24px;
+  margin-top: var(--accordion-gap);
 }
 
 .accordion details p {
-    margin-bottom: 0.8em;
+  margin: 0;
 }
 
 .accordion details summary {
-    position: relative;
-    padding: 0 16px;
-    padding-right: 46px;
-    cursor: pointer;
-    list-style: none;
-    overflow: auto;
-    transition: background-color 0.2s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: var(--accordion-summary-pad);
+  padding-right: 56px;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.accordion details[open] summary {
-    background-color: var(--light-color);
+.accordion details summary p {
+  color: var(--accordion-title-color);
+  font-size: var(--accordion-title-size);
+  line-height: var(--accordion-title-line);
+  font-weight: 700;
+}
+
+.accordion details[open] summary p {
+  font-weight: 400;
 }
 
 .accordion details summary:focus,
 .accordion details summary:hover {
-    background-color: var(--light-color);
+  background-color: var(--accordion-hover-bg);
+}
+
+.accordion details summary:focus p,
+.accordion details summary:hover p {
+  color: var(--accordion-hover-color);
 }
 
 .accordion details summary::-webkit-details-marker {
-    display: none;
+  display: none;
+}
+
+/* plus / cross icon */
+.accordion details summary::before,
+.accordion details summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  background-color: var(--accordion-icon-color);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.accordion details summary::before {
+  width: var(--accordion-icon-thickness);
+  height: var(--accordion-icon-size);
+  transform: translate(50%, -50%);
 }
 
 .accordion details summary::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%) rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid;
-    border-width: 2px 2px 0 0;
-    transition: transform 0.2s;
+  width: var(--accordion-icon-size);
+  height: var(--accordion-icon-thickness);
+  transform: translate(50%, -50%);
+}
+
+.accordion details[open] summary::before {
+  transform: translate(50%, -50%) rotate(45deg);
 }
 
 .accordion details[open] summary::after {
-    transform: translateY(-50%) rotate(-45deg);
+  transform: translate(50%, -50%) rotate(45deg);
+}
+
+.accordion details summary:focus::before,
+.accordion details summary:focus::after,
+.accordion details summary:hover::before,
+.accordion details summary:hover::after {
+  background-color: var(--accordion-hover-color);
 }
 
 .accordion details .accordion-item-body {
-    padding: 0 16px;
+  padding: var(--accordion-body-pad);
 }
 
-.accordion details[open] .accordion-item-body {
-    border-top: 1px solid #dadada;
-    background-color: var(--background-color);
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion details .accordion-item-body p {
+  color: var(--accordion-body-color);
+  font-size: var(--accordion-body-size);
+  line-height: var(--accordion-body-line);
 }
