@@ -102,9 +102,9 @@
   min-width: 192px;
   height: 40px;
   padding: 0 1.6em;
-  border: 2px solid var(--venia-accent);
+  border: 2px solid hsl(0deg 80% 50%);
   border-radius: 20px;
-  background-color: var(--venia-accent);
+  background-color: hsl(0deg 80% 50%);
   color: #fff;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
@@ -114,14 +114,34 @@
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: none;
+  animation: hero-banner-rgb-cycle 4s linear infinite;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
-  border-color: var(--venia-accent-hover);
-  background-color: var(--venia-accent-hover);
   color: #fff;
   text-decoration: none;
+  animation-duration: 1.5s;
+}
+
+@keyframes hero-banner-rgb-cycle {
+  from {
+    border-color: hsl(0deg 80% 50%);
+    background-color: hsl(0deg 80% 50%);
+  }
+
+  to {
+    border-color: hsl(360deg 80% 50%);
+    background-color: hsl(360deg 80% 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner .hero-banner-content a:any-link,
+  .hero-banner .hero-banner-content a:any-link:hover,
+  .hero-banner .hero-banner-content a:any-link:focus-visible {
+    animation: none;
+  }
 }
 
 .hero-banner .hero-banner-dots {
