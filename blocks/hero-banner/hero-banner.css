@@ -120,7 +120,7 @@
 .hero-banner .hero-banner-content a:any-link:focus-visible {
   border-color: var(--venia-accent-hover);
   background-color: var(--venia-accent-hover);
-  color: #fff;
+  color: var(--venia-text-color);
   text-decoration: none;
 }
 
