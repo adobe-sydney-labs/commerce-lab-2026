@@ -43,30 +43,38 @@
 }
 
 .columns-dark .columns-dark-body a:any-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 192px;
-  height: 40px;
-  padding: 0 1.6em;
-  border: 2px solid #fff;
-  border-radius: 20px;
-  background-color: transparent;
-  color: #fff;
+  height: 44px;
+  padding: 0 1.8em;
+  border: 2px solid #0ff;
+  border-radius: 0;
+  background-color: rgb(10 5 25 / 60%);
+  color: #0ff;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.25px;
+  letter-spacing: 2px;
   line-height: 1.25;
   text-transform: uppercase;
   text-decoration: none;
+  text-shadow: 0 0 6px #0ff;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  box-shadow: 0 0 8px rgb(0 255 255 / 50%), inset 0 0 8px rgb(0 255 255 / 25%);
+  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s, text-shadow 0.2s;
 }
 
 .columns-dark .columns-dark-body a:any-link:hover,
 .columns-dark .columns-dark-body a:any-link:focus-visible {
-  background-color: #fff;
-  color: var(--venia-dark-panel);
+  border-color: #f0f;
+  background-color: #0ff;
+  color: rgb(10 5 25);
+  text-shadow: none;
   text-decoration: none;
+  box-shadow: 0 0 16px rgb(255 0 255 / 60%), inset 0 0 10px rgb(255 0 255 / 30%);
 }
 
 @media (min-width: 900px) {

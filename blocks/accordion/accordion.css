@@ -1,61 +1,126 @@
+.accordion {
+  --accordion-cyber-cyan: #0ff;
+  --accordion-cyber-magenta: #f0f;
+  --accordion-cyber-bg: rgb(10 5 25 / 85%);
+  --accordion-cyber-bg-open: rgb(20 8 40 / 90%);
+}
+
 .accordion details {
-    border: 1px solid #dadada;
+  position: relative;
+  border: 2px solid var(--accordion-cyber-cyan);
+  background-color: var(--accordion-cyber-bg);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  box-shadow: 0 0 8px rgb(0 255 255 / 40%), inset 0 0 10px rgb(0 255 255 / 10%);
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.accordion details:hover {
+  border-color: var(--accordion-cyber-magenta);
+  box-shadow: 0 0 14px rgb(255 0 255 / 50%), inset 0 0 12px rgb(255 0 255 / 12%);
+}
+
+.accordion details[open] {
+  border-color: var(--accordion-cyber-magenta);
+  background-color: var(--accordion-cyber-bg-open);
+  box-shadow: 0 0 16px rgb(255 0 255 / 55%), inset 0 0 14px rgb(255 0 255 / 12%);
+  animation: accordion-cyber-flicker 2.5s ease-in-out infinite;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .accordion details + details {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .accordion details p {
-    margin-bottom: 0.8em;
+  margin-bottom: 0.8em;
 }
 
 .accordion details summary {
-    position: relative;
-    padding: 0 16px;
-    padding-right: 46px;
-    cursor: pointer;
-    list-style: none;
-    overflow: auto;
-    transition: background-color 0.2s;
+  position: relative;
+  padding: 16px 56px 16px 18px;
+  color: var(--accordion-cyber-cyan);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgb(0 255 255 / 70%);
+  cursor: pointer;
+  list-style: none;
+  overflow: auto;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.accordion details summary p {
+  margin: 0;
 }
 
 .accordion details[open] summary {
-    background-color: var(--light-color);
+  color: var(--accordion-cyber-magenta);
+  text-shadow: 0 0 8px rgb(255 0 255 / 80%);
 }
 
 .accordion details summary:focus,
 .accordion details summary:hover {
-    background-color: var(--light-color);
+  color: #fff;
+  text-shadow: 0 0 10px var(--accordion-cyber-cyan);
+}
+
+.accordion details[open] summary:focus,
+.accordion details[open] summary:hover {
+  text-shadow: 0 0 10px var(--accordion-cyber-magenta);
 }
 
 .accordion details summary::-webkit-details-marker {
-    display: none;
+  display: none;
 }
 
 .accordion details summary::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%) rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid;
-    border-width: 2px 2px 0 0;
-    transition: transform 0.2s;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translateY(-50%) rotate(135deg);
+  filter: drop-shadow(0 0 4px currentcolor);
+  transition: transform 0.2s;
 }
 
 .accordion details[open] summary::after {
-    transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
 }
 
 .accordion details .accordion-item-body {
-    padding: 0 16px;
+  padding: 16px 18px;
+  color: rgb(220 230 255 / 90%);
 }
 
 .accordion details[open] .accordion-item-body {
-    border-top: 1px solid #dadada;
-    background-color: var(--background-color);
+  border-top: 1px solid rgb(255 0 255 / 40%);
+}
+
+@keyframes accordion-cyber-flicker {
+  0%,
+  100% {
+    box-shadow: 0 0 16px rgb(255 0 255 / 55%), inset 0 0 14px rgb(255 0 255 / 12%);
+  }
+
+  48% {
+    box-shadow: 0 0 16px rgb(255 0 255 / 55%), inset 0 0 14px rgb(255 0 255 / 12%);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgb(0 255 255 / 60%), inset 0 0 16px rgb(0 255 255 / 15%);
+  }
+
+  52% {
+    box-shadow: 0 0 16px rgb(255 0 255 / 55%), inset 0 0 14px rgb(255 0 255 / 12%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion details[open] {
+    animation: none;
+  }
 }
