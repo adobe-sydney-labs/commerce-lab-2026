@@ -104,7 +104,7 @@
   padding: 0 1.8em;
   border: 2px solid transparent;
   border-radius: 22px;
-  background: linear-gradient(120deg, #ff6b3d, #ff3d77, #1fb6c4, #ffd23f);
+  background: #6b6b6b;
   background-size: 300% 300%;
   color: #fff;
   font-family: var(--venia-body-font);
@@ -115,8 +115,9 @@
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-  box-shadow: 0 6px 18px rgb(255 61 119 / 35%);
-  animation: hero-banner-beach-shift 6s ease infinite, hero-banner-beach-float 3.5s ease-in-out infinite;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 20%);
+  pointer-events: auto !important;
+  animation: hero-banner-beach-float 3.5s ease-in-out infinite;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -124,8 +125,11 @@
 .hero-banner .hero-banner-content a:any-link:focus-visible {
   color: #fff;
   text-decoration: none;
+  background: linear-gradient(120deg, #ff6b3d, #ff3d77, #1fb6c4, #ffd23f);
+  background-size: 300% 300%;
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 10px 26px rgb(31 182 196 / 45%);
+  animation: hero-banner-beach-shift 6s ease infinite, hero-banner-beach-float 3.5s ease-in-out infinite;
 }
 
 @keyframes hero-banner-beach-shift {
