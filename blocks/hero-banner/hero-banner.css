@@ -100,26 +100,29 @@
   align-items: center;
   justify-content: center;
   min-width: 192px;
-  height: 40px;
-  padding: 0 1.6em;
-  border: 2px solid var(--venia-accent);
-  border-radius: 20px;
-  background-color: var(--venia-accent);
+  height: 44px;
+  padding: 0 1.8em;
+  border: 2px solid #d4af37;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ff9f33 0%, #f08000 100%);
+  box-shadow: 0 2px 8px rgb(120 36 28 / 35%), inset 0 0 0 1px rgb(255 255 255 / 25%);
   color: #fff;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.25px;
+  letter-spacing: 1px;
   line-height: 1.25;
   text-transform: uppercase;
   text-decoration: none;
-  text-shadow: none;
+  text-shadow: 0 1px 2px rgb(120 36 28 / 55%);
+  pointer-events: auto !important;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
-  border-color: var(--venia-accent-hover);
-  background-color: var(--venia-accent-hover);
+  border-color: #ffd700;
+  background: linear-gradient(180deg, #f08000 0%, #c0392b 100%);
+  box-shadow: 0 3px 12px rgb(120 36 28 / 45%), inset 0 0 0 1px rgb(255 255 255 / 35%);
   color: #fff;
   text-decoration: none;
 }
