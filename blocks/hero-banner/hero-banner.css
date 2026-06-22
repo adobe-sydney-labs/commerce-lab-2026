@@ -106,7 +106,7 @@
   overflow: hidden;
   border: 0;
   border-radius: 24px;
-  background: linear-gradient(120deg, #ff8a3c 0%, #ff5f6d 30%, #1fb6c4 70%, #18d6b2 100%);
+  background: #6b6b6b;
   background-size: 300% 100%;
   color: #fff;
   font-family: var(--venia-body-font);
@@ -117,10 +117,9 @@
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-  box-shadow: 0 6px 18px rgb(255 95 109 / 35%), 0 2px 6px rgb(31 182 196 / 30%);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
   pointer-events: auto !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: hero-banner-wave 6s ease infinite;
 }
 
 .hero-banner .hero-banner-content a:any-link::before {
@@ -130,15 +129,24 @@
   background: linear-gradient(110deg, transparent 25%, rgb(255 255 255 / 55%) 50%, transparent 75%);
   background-size: 250% 100%;
   background-position: 150% 0;
-  animation: hero-banner-shimmer 3.5s ease-in-out infinite;
+  opacity: 0;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
+  background: linear-gradient(120deg, #ff8a3c 0%, #ff5f6d 30%, #1fb6c4 70%, #18d6b2 100%);
+  background-size: 300% 100%;
   color: #fff;
   text-decoration: none;
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 10px 26px rgb(255 95 109 / 45%), 0 4px 10px rgb(31 182 196 / 40%);
+  animation: hero-banner-wave 6s ease infinite;
+}
+
+.hero-banner .hero-banner-content a:any-link:hover::before,
+.hero-banner .hero-banner-content a:any-link:focus-visible::before {
+  opacity: 1;
+  animation: hero-banner-shimmer 3.5s ease-in-out infinite;
 }
 
 @keyframes hero-banner-wave {
@@ -153,8 +161,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-banner .hero-banner-content a:any-link,
-  .hero-banner .hero-banner-content a:any-link::before {
+  .hero-banner .hero-banner-content a:any-link:hover,
+  .hero-banner .hero-banner-content a:any-link:focus-visible,
+  .hero-banner .hero-banner-content a:any-link:hover::before,
+  .hero-banner .hero-banner-content a:any-link:focus-visible::before {
     animation: none;
   }
 
