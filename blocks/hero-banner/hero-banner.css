@@ -106,10 +106,10 @@
   overflow: hidden;
   border: 0;
   border-radius: 24px;
-  background: linear-gradient(110deg, #ff6b6b 0%, #ffa552 25%, #ffd166 50%, #2ec4b6 75%, #1f9bd6 100%);
+  background: #6b6b6b;
   background-size: 300% 100%;
   background-position: 0% 50%;
-  box-shadow: 0 6px 18px rgb(31 155 214 / 35%), 0 2px 6px rgb(255 107 107 / 30%);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
   color: #fff;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
@@ -119,8 +119,7 @@
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-  animation: hero-banner-wave 6s ease infinite;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
   pointer-events: auto !important;
 }
 
@@ -137,10 +136,13 @@
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
+  background: linear-gradient(110deg, #ff6b6b 0%, #ffa552 25%, #ffd166 50%, #2ec4b6 75%, #1f9bd6 100%);
+  background-size: 300% 100%;
   color: #fff;
   text-decoration: none;
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 10px 26px rgb(31 155 214 / 45%), 0 4px 10px rgb(255 107 107 / 40%);
+  animation: hero-banner-wave 6s ease infinite;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover::before,
