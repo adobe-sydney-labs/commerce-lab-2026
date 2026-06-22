@@ -105,7 +105,7 @@
   padding: 0 2em;
   border: 0;
   border-radius: 24px;
-  background: linear-gradient(120deg, #ff6b6b 0%, #ffb347 25%, #ffd93d 50%, #2ec4b6 75%, #00a8e8 100%);
+  background: #6b6b6b;
   background-size: 300% 300%;
   color: #fff;
   font-family: var(--venia-body-font);
@@ -116,11 +116,10 @@
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-  box-shadow: 0 6px 18px rgb(0 168 232 / 35%), 0 2px 6px rgb(255 107 107 / 30%);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
   pointer-events: auto !important;
   overflow: hidden;
-  animation: hero-banner-wave 6s ease infinite, hero-banner-bob 3s ease-in-out infinite;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 .hero-banner .hero-banner-content a:any-link::before {
@@ -129,16 +128,25 @@
   inset: 0;
   background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 55%) 50%, transparent 70%);
   transform: translateX(-120%);
-  animation: hero-banner-shimmer 3.5s ease-in-out infinite;
+  opacity: 0;
   pointer-events: none;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
+  background: linear-gradient(120deg, #ff6b6b 0%, #ffb347 25%, #ffd93d 50%, #2ec4b6 75%, #00a8e8 100%);
+  background-size: 300% 300%;
   color: #fff;
   text-decoration: none;
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 10px 26px rgb(0 168 232 / 45%), 0 4px 10px rgb(255 107 107 / 40%);
+  animation: hero-banner-wave 6s ease infinite, hero-banner-bob 3s ease-in-out infinite;
+}
+
+.hero-banner .hero-banner-content a:any-link:hover::before,
+.hero-banner .hero-banner-content a:any-link:focus-visible::before {
+  opacity: 1;
+  animation: hero-banner-shimmer 3.5s ease-in-out infinite;
 }
 
 @keyframes hero-banner-wave {
