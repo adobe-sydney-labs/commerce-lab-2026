@@ -95,17 +95,29 @@
   text-shadow: none;
 }
 
-.hero-banner .hero-banner-content a:any-link {
+.hero-banner .hero-banner-content h1 a:any-link,
+.hero-banner .hero-banner-content h2 a:any-link,
+.hero-banner .hero-banner-content h3 a:any-link,
+.hero-banner .hero-banner-content h4 a:any-link,
+.hero-banner .hero-banner-content h5 a:any-link,
+.hero-banner .hero-banner-content h6 a:any-link {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  text-shadow: inherit;
+}
+
+.hero-banner .hero-banner-content p a:any-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 192px;
   height: 40px;
   padding: 0 1.6em;
-  border: 2px solid var(--venia-accent);
+  border: 2px solid #ffd200;
   border-radius: 20px;
-  background-color: var(--venia-accent);
-  color: #fff;
+  background-color: #ffd200;
+  color: #1a1a1a;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
   font-weight: 700;
@@ -116,11 +128,11 @@
   text-shadow: none;
 }
 
-.hero-banner .hero-banner-content a:any-link:hover,
-.hero-banner .hero-banner-content a:any-link:focus-visible {
-  border-color: var(--venia-accent-hover);
-  background-color: var(--venia-accent-hover);
-  color: #fff;
+.hero-banner .hero-banner-content p a:any-link:hover,
+.hero-banner .hero-banner-content p a:any-link:focus-visible {
+  border-color: #e6bd00;
+  background-color: #e6bd00;
+  color: #1a1a1a;
   text-decoration: none;
 }
 
