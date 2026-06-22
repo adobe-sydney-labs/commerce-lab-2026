@@ -105,8 +105,8 @@
   padding: 0 2em;
   border: 0;
   border-radius: 24px;
-  background: linear-gradient(120deg, #0047ff 0%, #2f6bff 35%, #ff2d55 65%, #e60023 100%);
-  background-size: 300% 100%;
+  background: linear-gradient(90deg, #ff0040, #ff8c00, #ffe600, #00d26a, #00b3ff, #7a00ff, #ff00c8, #ff0040);
+  background-size: 400% 100%;
   background-position: 0% 50%;
   color: #fff;
   font-family: var(--venia-body-font);
@@ -116,11 +116,11 @@
   line-height: 1.25;
   text-transform: uppercase;
   text-decoration: none;
-  text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-  box-shadow: 0 0 0 0 rgb(0 71 255 / 50%);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 35%);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
   overflow: hidden;
   pointer-events: auto !important;
-  animation: hero-banner-cta-wave 6s ease infinite, hero-banner-cta-pulse 1.8s ease-in-out infinite;
+  animation: hero-banner-cta-rainbow 4s linear infinite;
 }
 
 .hero-banner .hero-banner-content a:any-link::before {
@@ -140,8 +140,8 @@
   color: #fff;
   text-decoration: none;
   transform: scale(1.06);
-  box-shadow: 0 0 24px 6px rgb(255 45 85 / 55%);
-  animation: hero-banner-cta-wave 6s ease infinite;
+  box-shadow: 0 6px 22px rgb(0 0 0 / 35%);
+  animation: hero-banner-cta-rainbow 2s linear infinite;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover::before,
@@ -149,16 +149,9 @@
   animation: hero-banner-cta-shine 0.9s ease forwards;
 }
 
-@keyframes hero-banner-cta-wave {
+@keyframes hero-banner-cta-rainbow {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes hero-banner-cta-pulse {
-  0% { box-shadow: 0 0 0 0 rgb(0 71 255 / 60%); }
-  50% { box-shadow: 0 0 20px 8px rgb(230 0 35 / 55%); }
-  100% { box-shadow: 0 0 0 0 rgb(0 71 255 / 60%); }
+  100% { background-position: 100% 50%; }
 }
 
 @keyframes hero-banner-cta-shine {
@@ -175,7 +168,7 @@
   .hero-banner .hero-banner-content a:any-link:hover,
   .hero-banner .hero-banner-content a:any-link:focus-visible {
     transform: none;
-    box-shadow: 0 0 16px 4px rgb(255 45 85 / 55%);
+    box-shadow: 0 6px 22px rgb(0 0 0 / 35%);
   }
 
   .hero-banner .hero-banner-content a:any-link:hover::before,
