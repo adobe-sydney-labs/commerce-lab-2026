@@ -102,9 +102,9 @@
   min-width: 192px;
   height: 40px;
   padding: 0 1.6em;
-  border: 2px solid var(--venia-accent);
+  border: 2px solid #767676;
   border-radius: 20px;
-  background-color: var(--venia-accent);
+  background-color: #767676;
   color: #fff;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
@@ -114,12 +114,13 @@
   text-transform: uppercase;
   text-decoration: none;
   text-shadow: none;
+  pointer-events: auto !important;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
   border-color: var(--venia-accent-hover);
-  background-color: var(--venia-accent-hover);
+  background-image: linear-gradient(135deg, var(--venia-accent), var(--venia-accent-hover));
   color: var(--venia-text-color);
   text-decoration: none;
 }
