@@ -100,11 +100,12 @@
   align-items: center;
   justify-content: center;
   min-width: 192px;
-  height: 40px;
-  padding: 0 1.6em;
-  border: 2px solid var(--venia-accent);
-  border-radius: 20px;
-  background-color: var(--venia-accent);
+  height: 44px;
+  padding: 0 1.8em;
+  border: 2px solid transparent;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #ff6b3d, #ff3d77, #1fb6c4, #ffd23f);
+  background-size: 300% 300%;
   color: #fff;
   font-family: var(--venia-body-font);
   font-size: 1.4rem;
@@ -113,15 +114,40 @@
   line-height: 1.25;
   text-transform: uppercase;
   text-decoration: none;
-  text-shadow: none;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
+  box-shadow: 0 6px 18px rgb(255 61 119 / 35%);
+  animation: hero-banner-beach-shift 6s ease infinite, hero-banner-beach-float 3.5s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-banner .hero-banner-content a:any-link:hover,
 .hero-banner .hero-banner-content a:any-link:focus-visible {
-  border-color: var(--venia-accent-hover);
-  background-color: var(--venia-accent-hover);
   color: #fff;
   text-decoration: none;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 26px rgb(31 182 196 / 45%);
+}
+
+@keyframes hero-banner-beach-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes hero-banner-beach-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner .hero-banner-content a:any-link {
+    animation: none;
+  }
+
+  .hero-banner .hero-banner-content a:any-link:hover,
+  .hero-banner .hero-banner-content a:any-link:focus-visible {
+    transform: none;
+  }
 }
 
 .hero-banner .hero-banner-dots {
