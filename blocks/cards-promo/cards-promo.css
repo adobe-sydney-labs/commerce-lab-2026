@@ -50,7 +50,7 @@
   margin: 0;
   font-size: 1.4rem;
   line-height: 1.5;
-  color: var(--venia-text-color);
+  color: rgb(214 230 255 / 85%);
 }
 
 @media (min-width: 600px) {

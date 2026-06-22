@@ -668,3 +668,75 @@ body.columns main > .section:empty {
 main[hidden] {
   display: none !important;
 }
+
+/* ==========================================================================
+   Cyberpunk theme — scoped to the homepage only (body.home)
+   ========================================================================== */
+body.home {
+  --cyber-cyan: #0ff;
+  --cyber-magenta: #f0f;
+  --cyber-bg: #07030f;
+  --cyber-bg-soft: #0e0820;
+  --cyber-text: #d6e6ff;
+
+  color: var(--cyber-text);
+  background-color: var(--cyber-bg);
+}
+
+/* Animated neon grid backdrop behind the whole page */
+body.home::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 0%, rgb(255 0 255 / 12%), transparent 60%),
+    radial-gradient(circle at 50% 100%, rgb(0 255 255 / 12%), transparent 55%),
+    linear-gradient(rgb(0 255 255 / 6%) 1px, transparent 1px) 0 0 / 100% 48px,
+    linear-gradient(90deg, rgb(255 0 255 / 6%) 1px, transparent 1px) 0 0 / 48px 100%,
+    var(--cyber-bg);
+  animation: cyber-bg-drift 14s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cyber-bg-drift {
+  from { background-position: 50% 0%, 50% 100%, 0 0, 0 0, 0 0; }
+  to { background-position: 50% 0%, 50% 100%, 0 48px, 48px 0, 0 0; }
+}
+
+body.home main h1,
+body.home main h2,
+body.home main h3,
+body.home main h4,
+body.home main h5,
+body.home main h6 {
+  color: var(--cyber-cyan);
+  text-shadow: 0 0 8px rgb(0 255 255 / 60%), 0 0 18px rgb(255 0 255 / 35%);
+}
+
+body.home main p {
+  color: var(--cyber-text);
+}
+
+body.home main a:not(.dropin-design a, .button) {
+  color: var(--cyber-magenta);
+  text-shadow: 0 0 6px rgb(255 0 255 / 50%);
+}
+
+body.home main a:not(.dropin-design a, .button):hover {
+  color: var(--cyber-cyan);
+  text-shadow: 0 0 8px rgb(0 255 255 / 70%);
+}
+
+/* Neon-frame the default content sections */
+body.home main .section.light,
+body.home main .section.highlight {
+  background-color: var(--cyber-bg-soft);
+  box-shadow: inset 0 0 0 1px rgb(0 255 255 / 20%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home::before {
+    animation: none;
+  }
+}

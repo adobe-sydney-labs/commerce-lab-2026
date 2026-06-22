@@ -143,6 +143,11 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
 
+  const { pathname } = window.location;
+  if (pathname === '/' || pathname === '/index') {
+    document.body.classList.add('home');
+  }
+
   const main = doc.querySelector('main');
   if (main) {
     try {
