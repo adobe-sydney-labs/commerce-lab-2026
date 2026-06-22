@@ -1,0 +1,10 @@
+{
+  "sites": {
+    "coml24": {
+      "previewOrg": "adobe-sydney-labs",
+      "previewSite": "coml24",
+      "contentHostUrl": "https://content.da.live/adobe-sydney-labs/coml24/"
+    }
+  },
+  "type": "da"
+}
