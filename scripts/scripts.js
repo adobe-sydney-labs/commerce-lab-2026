@@ -143,6 +143,12 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
 
+  // titles are auto-derived from headings, which may contain markup (e.g. <br>);
+  // strip any tags so the browser tab shows clean text
+  if (document.title.includes('<')) {
+    document.title = document.title.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
   const main = doc.querySelector('main');
   if (main) {
     try {

@@ -1,61 +1,86 @@
-.accordion details {
-    border: 1px solid #dadada;
+.accordion {
+  /* tokens extracted from Figma "Venia Shipping - Accordion" (node 7761:2) */
+  --accordion-radius: 16px;
+  --accordion-border-color: var(--venia-accent);
+  --accordion-fill: #f3f3f3;
+  --accordion-active-fill: var(--venia-accent);
+  --accordion-label-color: #0f1a14;
+  --accordion-body-color: #3d4f45;
+  --accordion-icon-color: var(--venia-accent);
+  --accordion-on-active-color: #fff;
+  --accordion-gap: 12px;
+  --accordion-header-padding: 13px 20px 13px 24px;
+  --accordion-body-padding: 16px 24px;
+  --accordion-label-font: 700 1.8rem/2.2rem var(--venia-body-font);
+  --accordion-body-font: 400 1.6rem/2.7rem var(--venia-body-font);
+  --accordion-icon-size: 2.4rem;
+}
+
+.accordion .accordion-item {
+  border: 1px solid var(--accordion-border-color);
+  border-radius: var(--accordion-radius);
+  background-color: var(--accordion-fill);
+  overflow: hidden;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.accordion details + details {
-    margin-top: 24px;
+.accordion .accordion-item + .accordion-item {
+  margin-top: var(--accordion-gap);
 }
 
-.accordion details p {
-    margin-bottom: 0.8em;
+.accordion .accordion-item p {
+  margin: 0;
 }
 
-.accordion details summary {
-    position: relative;
-    padding: 0 16px;
-    padding-right: 46px;
-    cursor: pointer;
-    list-style: none;
-    overflow: auto;
-    transition: background-color 0.2s;
+.accordion .accordion-item-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: var(--accordion-header-padding);
+  color: var(--accordion-label-color);
+  font: var(--accordion-label-font);
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.accordion details[open] summary {
-    background-color: var(--light-color);
+.accordion .accordion-item-label::-webkit-details-marker {
+  display: none;
 }
 
-.accordion details summary:focus,
-.accordion details summary:hover {
-    background-color: var(--light-color);
+.accordion .accordion-item-label:hover,
+.accordion .accordion-item-label:focus-visible {
+  background-color: var(--accordion-active-fill);
+  color: var(--accordion-on-active-color);
+  outline: none;
 }
 
-.accordion details summary::-webkit-details-marker {
-    display: none;
+.accordion .accordion-item-label::after {
+  content: "+";
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--accordion-icon-size);
+  height: var(--accordion-icon-size);
+  color: var(--accordion-icon-color);
+  font: 400 2rem/1 var(--venia-body-font);
+  transition: color 0.2s;
 }
 
-.accordion details summary::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%) rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid;
-    border-width: 2px 2px 0 0;
-    transition: transform 0.2s;
+.accordion .accordion-item-label:hover::after,
+.accordion .accordion-item-label:focus-visible::after {
+  color: var(--accordion-on-active-color);
 }
 
-.accordion details[open] summary::after {
-    transform: translateY(-50%) rotate(-45deg);
+.accordion .accordion-item[open] .accordion-item-label::after {
+  content: "\00d7";
 }
 
-.accordion details .accordion-item-body {
-    padding: 0 16px;
-}
-
-.accordion details[open] .accordion-item-body {
-    border-top: 1px solid #dadada;
-    background-color: var(--background-color);
+.accordion .accordion-item-body {
+  padding: var(--accordion-body-padding);
+  color: var(--accordion-body-color);
+  font: var(--accordion-body-font);
 }
